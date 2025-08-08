@@ -9,3 +9,5 @@ Left off on optimized Images [here](https://nextjs.org/learn/dashboard-app/optim
 
 Left off on Layouts and pages
 [here](https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages)
+
+[Request Waterfalls](https://nextjs.org/learn/dashboard-app/fetching-data#what-are-request-waterfalls)
