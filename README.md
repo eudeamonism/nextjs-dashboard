@@ -11,3 +11,7 @@ Left off on Layouts and pages
 [here](https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages)
 
 [Request Waterfalls](https://nextjs.org/learn/dashboard-app/fetching-data#what-are-request-waterfalls)
+
+[Streaming](https://nextjs.org/learn/dashboard-app/streaming)
+
+[Streaming a component](https://nextjs.org/learn/dashboard-app/streaming#streaming-a-component)
