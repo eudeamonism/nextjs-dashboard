@@ -24,3 +24,16 @@ In the actual component, instead of immediately rendering with props, we can per
 
 This process—where parts of the UI stream in and replace placeholders—is referred to as **streaming** in React.
 
+##  **[CH 10 Partial Prerendering](https://nextjs.org/learn/dashboard-app/partial-prerendering)**
+
+Skipped since not advisable in production...
+
+## [Ch11 Adding Search and Pagination](https://nextjs.org/learn/dashboard-app/adding-search-and-pagination)
+
+### [Capture the user's input](https://nextjs.org/learn/dashboard-app/adding-search-and-pagination#1-capture-the-users-input)
+
+### [Debouncing](https://nextjs.org/learn/dashboard-app/adding-search-and-pagination#best-practice-debouncing)
+
+Debouncing is the practice of delaying the execution of a function until after a specified period of inactivity. For example, in a search bar, a timer is reset on each keystroke. When the user pauses typing—indicating they’ve likely finished their query—the function (such as a database search) runs. This helps prevent multiple unnecessary calls and improves performance.
+
+### [Adding Pagination](https://nextjs.org/learn/dashboard-app/adding-search-and-pagination#adding-pagination)
