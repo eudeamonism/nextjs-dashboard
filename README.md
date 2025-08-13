@@ -44,3 +44,25 @@ Debouncing is the practice of delaying the execution of a function until after a
 Highlights: Used Zod to typecast amount to a number, since it populates as a string. Used revalidatePath method from 'nextcache' in order to store correct cache in client browser to prevent unnecessary rerenderings. used a redirect so that when that is complete, the action of creating an invoice, user is taken back to invoices page.
 
 ### [Updating an Invoice](https://nextjs.org/learn/dashboard-app/mutating-data#updating-an-invoice)
+
+**TIPS**
+
+- Make sure that page.tsx is in appropriate nested folder. For example, in the following url invoices/[id]/edit, the page.tsx was located at the root folder [id] rather than within edit. I kept getting an error that page wasn't found.
+
+### [Passing Id to Server Action for Updating](https://nextjs.org/learn/dashboard-app/mutating-data#4-pass-the-id-to-the-server-action)
+
+TypeScript needs a bind thing... Explore more with Typescript course.
+
+### [Delete Invoice](https://nextjs.org/learn/dashboard-app/mutating-data#deleting-an-invoice)
+
+
+## [Handling Errors](https://nextjs.org/learn/dashboard-app/error-handling)
+
+- Placed an error.tsx file at root folder, ie dashboard/invoices
+- use effect used to spot error and reset
+- error of type Error
+- reset goes back to original link, like redirect
+- used for uncaught exceptions, ie
+    - `throw new Error("Cannot delete invoice. Error.");`
+
+### [Handling 404 Errors](https://nextjs.org/learn/dashboard-app/error-handling#handling-404-errors-with-the-notfound-function)
