@@ -1,68 +1,98 @@
-## Next.js App Router Course - Starter
+## Next.js App Router Course – Starter
 
-This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
+This is the starter template for the **Next.js App Router Course**. It contains the base code for the dashboard application.
 
-For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+For more details, see the [course curriculum](https://nextjs.org/learn) on the Next.js website.
 
-Left off on optimized Images [here](https://nextjs.org/learn/dashboard-app/optimizing-fonts-images#why-optimize-images)
+---
 
-Left off on Layouts and pages
-[here](https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages)
+### Progress Checkpoints
+- **Optimized Images** – [Left off here](https://nextjs.org/learn/dashboard-app/optimizing-fonts-images#why-optimize-images)
+- **Layouts and Pages** – [Left off here](https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages)
+- **Request Waterfalls** – [Read more](https://nextjs.org/learn/dashboard-app/fetching-data#what-are-request-waterfalls)
+- **Streaming** – [Read more](https://nextjs.org/learn/dashboard-app/streaming)
 
-[Request Waterfalls](https://nextjs.org/learn/dashboard-app/fetching-data#what-are-request-waterfalls)
-
-[Streaming](https://nextjs.org/learn/dashboard-app/streaming)
+---
 
 ## React Suspense
 
-[Streaming a component](https://nextjs.org/learn/dashboard-app/streaming#streaming-a-component)
+[Streaming a Component](https://nextjs.org/learn/dashboard-app/streaming#streaming-a-component)
 
-React Suspense lets you specify a fallback React element that is shown while the main component is loading. In this example, the fallback is a UI skeleton.
+React Suspense lets you specify a **fallback UI** that’s displayed while the main component is loading.  
+- While loading, the fallback (often a skeleton) is shown.  
+- Once data is ready, React swaps in the real UI.  
+- This process of progressively replacing placeholders is referred to as **streaming** in React.
 
-In the actual component, instead of immediately rendering with props, we can perform business logic or data fetching inside it. While that data is loading, the fallback (skeleton) is displayed. Once the data arrives, React swaps the fallback for the actual UI component.
+---
 
-This process—where parts of the UI stream in and replace placeholders—is referred to as **streaming** in React.
+## [CH 10: Partial Prerendering](https://nextjs.org/learn/dashboard-app/partial-prerendering)
+*(Skipped – not advisable for production in this case.)*
 
-## **[CH 10 Partial Prerendering](https://nextjs.org/learn/dashboard-app/partial-prerendering)**
+---
 
-Skipped since not advisable in production...
+## [CH 11: Adding Search and Pagination](https://nextjs.org/learn/dashboard-app/adding-search-and-pagination)
 
-## [Ch11 Adding Search and Pagination](https://nextjs.org/learn/dashboard-app/adding-search-and-pagination)
+**Debouncing**  
+- Delays execution of a function until a short period after the last user input.  
+- Prevents multiple unnecessary calls (e.g., database queries) while typing.
 
-### [Capture the user's input](https://nextjs.org/learn/dashboard-app/adding-search-and-pagination#1-capture-the-users-input)
+**Pagination**  
+- Splits data into pages to improve performance and navigation.
 
-### [Debouncing](https://nextjs.org/learn/dashboard-app/adding-search-and-pagination#best-practice-debouncing)
+---
 
-Debouncing is the practice of delaying the execution of a function until after a specified period of inactivity. For example, in a search bar, a timer is reset on each keystroke. When the user pauses typing—indicating they’ve likely finished their query—the function (such as a database search) runs. This helps prevent multiple unnecessary calls and improves performance.
-
-### [Adding Pagination](https://nextjs.org/learn/dashboard-app/adding-search-and-pagination#adding-pagination)
-
-## [ch12 Mutating Data](https://nextjs.org/learn/dashboard-app/mutating-data)
+## [CH 12: Mutating Data](https://nextjs.org/learn/dashboard-app/mutating-data)
 
 ### Creating an Invoice
+- Used **Zod** to typecast `amount` from string to number.
+- Used `revalidatePath` from `next/cache` to keep browser cache correct.
+- Redirected after creation to return the user to the invoices page.
 
-Highlights: Used Zod to typecast amount to a number, since it populates as a string. Used revalidatePath method from 'nextcache' in order to store correct cache in client browser to prevent unnecessary rerenderings. used a redirect so that when that is complete, the action of creating an invoice, user is taken back to invoices page.
+### Updating an Invoice
+- Ensure `page.tsx` is in the correct nested folder structure.  
+- Pass ID to server action using TypeScript’s `bind` as needed.
 
-### [Updating an Invoice](https://nextjs.org/learn/dashboard-app/mutating-data#updating-an-invoice)
+### Deleting an Invoice
+- Basic delete with SQL and path revalidation.
 
-**TIPS**
-
-- Make sure that page.tsx is in appropriate nested folder. For example, in the following url invoices/[id]/edit, the page.tsx was located at the root folder [id] rather than within edit. I kept getting an error that page wasn't found.
-
-### [Passing Id to Server Action for Updating](https://nextjs.org/learn/dashboard-app/mutating-data#4-pass-the-id-to-the-server-action)
-
-TypeScript needs a bind thing... Explore more with Typescript course.
-
-### [Delete Invoice](https://nextjs.org/learn/dashboard-app/mutating-data#deleting-an-invoice)
-
+---
 
 ## [Handling Errors](https://nextjs.org/learn/dashboard-app/error-handling)
 
-- Placed an error.tsx file at root folder, ie dashboard/invoices
-- use effect used to spot error and reset
-- error of type Error
-- reset goes back to original link, like redirect
-- used for uncaught exceptions, ie
-    - `throw new Error("Cannot delete invoice. Error.");`
+**General Error Handling**
+- Place `error.tsx` at the root of the relevant route (e.g., `dashboard/invoices`).
+- Use `reset` to navigate back after an error.
+- For uncaught exceptions, you can `throw new Error("message")`.
 
-### [Handling 404 Errors](https://nextjs.org/learn/dashboard-app/error-handling#handling-404-errors-with-the-notfound-function)
+**404 Handling**
+- Use `notFound()` from Next.js to display a styled "Not Found" component.
+
+---
+
+## [Improving Accessibility](https://nextjs.org/learn/dashboard-app/improving-accessibility)
+
+- Added ESLint accessibility plugin (`eslint-plugin-jsx-a11y`).
+- Use `pnpm lint` to check for accessibility issues.
+
+### Client-Side Validation — Key Takeaways
+1. **Runs in the browser before data is sent**  
+   - Native HTML5 attributes like `required`, `type="number"`, and `pattern` prevent submission until conditions are met.
+2. **Helpful but not secure**  
+   - Instant feedback, but can be bypassed — always pair with server-side validation.
+3. **Accessibility limitations**  
+   - Some assistive technologies (ATs) may not announce native messages.  
+   - Consider custom, AT-friendly error messaging.
+
+### Server-Side Validation — Key Takeaways
+- **Runs on the server** – Zod schema validation happens before any database action.
+- **Consistent rules** – Works for all submission methods (UI, API, scripts).
+- **More secure** – Cannot be bypassed by disabling JavaScript or editing the DOM.
+- **Single source of truth** – Centralized schema for all validation requirements.
+- **Error handling with `useActionState`** – Returns structured `errors` and `message` for the UI.
+- **Accessible feedback** – ARIA attributes like `aria-describedby` and `aria-live` make server errors screen reader-friendly.
+- **Pairs with client-side checks** – Client checks offer instant feedback, but server-side remains the final authority.
+
+---
+
+## [Adding Authentication](https://nextjs.org/learn/dashboard-app/adding-authentication)
+*(Not yet started.)*
